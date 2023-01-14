@@ -145,6 +145,9 @@ public:
         {
             query.exec("INSERT INTO "+tableName+" ("+columns+") VALUES ("+data+");");
             query.commit();
+        } catch (pqxx::foreign_key_violation const &e)
+        {
+            throw std::string{"Foreign key violation in table - "+tableName+"\nRaw cannot be added\nQuery: "+e.query()};
         } catch (pqxx::sql_error const &e)
         {
             throw std::string{"Invalid amount or data of parameters\nQuery: "+e.query()};

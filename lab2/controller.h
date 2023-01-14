@@ -20,7 +20,7 @@ private:
 
     static std::string fixStr(const std::string &str, const char &quotes = '"')
     {
-        std::regex line(R"(([a-zA-Z0-9_%:;>!<=-]+( *\.? *[a-zA-Z0-9_%:;>!<=-]+)*)|(^\*$))", std::regex::icase);
+        std::regex line(R"(([a-zA-Z0-9_%:;>!<=@-]+( *\.? *[a-zA-Z0-9_%:;>!<=@-]+)*)|(^\*$))", std::regex::icase);
         std::sregex_iterator wordMatch(str.begin(), str.end(), line);
         std::sregex_iterator endMatch{};
 
@@ -193,12 +193,16 @@ public:
                 system("cls");
                 std::cerr << e << std::endl;
                 viewObj->view_Clean();
+                viewObj->view_Clean();
+                getchar();
             }
             catch (std::exception const &e)
             {
                 system("cls");
                 std::cerr << e.what() << std::endl;
                 viewObj->view_Clean();
+                viewObj->view_Clean();
+                getchar();
             }
         }
     }
